@@ -4,7 +4,6 @@ import Homepage from "./Homepage";
 import Login from "./Auth/Login";
 import Register from "./Auth/Register";
 import UserContext from "./userContext";
-import FriendList from "./FriendList"
 import ProfileForm from "./ProfileForm"
 import Dashboard from "./Dashboard"
 import ProfilePage from "./ProfilePage"
@@ -16,8 +15,7 @@ import ProfilePage from "./ProfilePage"
 
 function RouteList({ login, register, update, addPhoto }) {
 
-  const {user} = useContext(UserContext);
-  console.log("user", user)
+  const {user} = useContext(UserContext)
 
   if (user) {
     return (
@@ -41,7 +39,8 @@ function RouteList({ login, register, update, addPhoto }) {
 
           <Route
             path="/profile"
-            element={<ProfilePage/>}
+            element={<ProfilePage user={user}/>
+            }
           />
           <Route
             path="/profile/edit"

@@ -1,11 +1,11 @@
 import axios from "axios";
-import FormData from 'form-data'
+import FormData from 'form-data';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5001/api";
 
 class FrienderApi {
 
-  static token = this.token
+  static token = this.token;
 
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
@@ -25,18 +25,18 @@ class FrienderApi {
       throw Array.isArray(message) ? message : [message];
     }
   }
-   /** Return all potental matches for a given user based on location. */
+  /** Return all potental matches for a given user based on location. */
 
-  static async getUsers(token){
-    this.token = token
+  static async getUsers(token) {
+    this.token = token;
     let res = await this.request(`users`);
 
-    return res.matches
+    return res.matches;
   }
 
-   /** Get a token with username/password.  */
+  /** Get a token with username/password.  */
 
-   static async login(user) {
+  static async login(user) {
     const data = user;
     let res = await this.request(`token`, data, "post");
     return res.access_token;
@@ -51,9 +51,9 @@ class FrienderApi {
     return res.access_token;
   }
 
-   /** Update a user. */
+  /** Update a user. */
 
-   static async update(formData, username, token) {
+  static async update(formData, username, token) {
     this.token = token;
     const data = formData;
     let res = await this.request(`users/${username}`, data, "patch");
@@ -70,18 +70,32 @@ class FrienderApi {
   static async addPhoto(file, username, token) {
     this.token = token;
     let files = new FormData();
-    files.append("file", file)
-    const headers = { Authorization: `Bearer ${FrienderApi.token}` ,
-      "Content-type" :'multipart/form-data'}
-    let res = await axios({ url:`${BASE_URL}/users/${username}/photos`, method:"post", data:files, headers: headers }).data;
+    files.append("file", file);
+    const headers = {
+      Authorization: `Bearer ${FrienderApi.token}`,
+      "Content-type": 'multipart/form-data'
+    };
+    let res = await axios({ url: `${BASE_URL}/users/${username}/photos`, method: "post", data: files, headers: headers }).data;
     return res;
   }
 
   static async getImages(username, token) {
     this.token = token;
-    console.log("what is username",username)
     let res = await this.request(`users/${username}/photos`);
     return res.images;
+  }
+
+  static async matchUser(username, match, token) {
+    this.token = token;
+    const data = match;
+    let res = await this.request(`users/${username}/match`, data);
+    return res.msg;
+  }
+  static async unmatchUser(username, match, token) {
+    this.token = token;
+    const data = match;
+    let res = await this.request(`users/${username}/unmatch`, data);
+    return res.msg;
   }
 
 

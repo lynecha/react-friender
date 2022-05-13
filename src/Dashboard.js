@@ -1,45 +1,46 @@
 import React, { useState, useEffect, useContext } from "react";
-import UserContext from "./userContext";
 import { Link } from "react-router-dom";
 import FrienderApi from "./FrienderApi";
-import FriendCard from "./FriendCard";
+import FriendCardList from "./FriendCardList";
+import UserContext from "./userContext";
 
 /** presentational component to show the Hero Homepage */
 function Dashboard() {
-    const { user } = useContext(UserContext);
-    const [potentialMatches, setPotentialMatches] = useState(null)
-    const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        async function getMatches() {
+  const [potentialMatches, setPotentialMatches] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const { user } = useContext(UserContext);
+  const token = localStorage.getItem("token");
 
-            const res = await FrienderApi.getUsers(localStorage.getItem("token"))
-            for (let user of res) {
-                let images = await FrienderApi.getImages(user.username,localStorage.getItem("token"));
-                user["images"] = images;
-            }
-            setPotentialMatches(() => [...res])
-            setIsLoading(() => false);
-        }
-        getMatches();
-    },[]);
+  async function matchUser(userToMatch) {
+    const res = await FrienderApi.likeUser(user.username, userToMatch, token);
+    return res;
+  }
 
-    if (isLoading) {
-        return (
-            <div>
-                <p className="text-dark">Loading...</p>
-            </div>
-            
-        )
+  async function unmatchUser(userToPass) {
+    const res = await FrienderApi.unLikeUser(user.username, userToPass, token);
+    return res;
+  }
+
+  useEffect(() => {
+    async function getMatches() {
+
+      const res = await FrienderApi.getUsers(token);
+      for (let user of res) {
+        let images = await FrienderApi.getImages(user.username, token);
+        user["images"] = images;
+      }
+      setPotentialMatches(() => [...res]);
+      setIsLoading(() => false);
     }
+    getMatches();
+  }, []);
 
-    return (
-        <div>
-            {potentialMatches.map((friend,idx) => {
-                return <FriendCard key={idx} friend={friend} />
-            })}
-        </div>
-    )
+  if (isLoading) return <div><p className="text-dark">Loading...</p></div>;
+
+  return (
+    <FriendCardList matchUser={matchUser} unmatchUser={unmatchUser} potentialMatches={potentialMatches} />
+  );
 
 }
 export default Dashboard;

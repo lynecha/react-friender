@@ -5,7 +5,7 @@ import "./Nav.css";
 
 /** shows the routes based on if the current user exists
  *  prop: logout function
- *  
+ *
  */
 function Nav({logout}) {
   const { user } = useContext(UserContext);

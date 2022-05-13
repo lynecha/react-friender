@@ -8,10 +8,8 @@ function Register({ register }) {
   let initialFormData = {
     username: "",
     password: "",
-    firstName: "",
-    lastName: "",
     email: "",
-    location:""
+    location: ""
   };
   const [formData, setFormData] = useState(initialFormData);
   const [errorMsg, setErrorMsg] = useState([]);
@@ -36,14 +34,22 @@ function Register({ register }) {
     }
   }
 
+  const formNames = {
+    username: "Username",
+    password: "Password",
+    email: "Email",
+    location: "Zip Code"
+  };
+
   function renderForm() {
     return Object.keys(initialFormData).map((field) => {
       return (
         <div className="mb-3 card-body" key={field}>
+          <label htmlFor={`Register-${field}`}>{formNames[field]}</label>
           <input
             id={`Register-${field}`}
             name={field}
-            type={field==="password" ? "password" : "text"}
+            type={field === "password" ? "password" : "text"}
             className="form-control"
             placeholder={field}
             onChange={handleChange}
@@ -56,18 +62,19 @@ function Register({ register }) {
   }
 
   return (
-    <div className="registerContainer">
-      <h2>Sign Up</h2>
-      <form className="RegisterForm card align-self-center" onSubmit={handleSubmit}>
-        {renderForm()}
-
-        <button className="btn-primary rig btn btn-lrg registerForm-Btn">
-          Signup
-        </button>
-      </form>
-      {errorMsg.map((err) => (
-        <p>{err}</p>
-      ))}
+    <div className="row d-flex justify-content-center w-100 h-25 mt-5 mb-2">
+      <div className="col-12 w-50">
+        <h3 className="my-3 text-center">Sign Up</h3>
+        <form className="bg-white p-3 rounded" onSubmit={handleSubmit}>
+          {renderForm()}
+          <button className="btn-primary btn">
+            Signup
+          </button>
+        </form>
+        {errorMsg.map((err) => (
+          <p>{err}</p>
+        ))}
+      </div>
     </div>
   );
 }

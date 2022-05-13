@@ -1,31 +1,16 @@
 import { Link } from "react-router-dom";
-import React, {useContext } from "react";
+import React, { useContext } from "react";
 import UserContext from "./userContext";
-import FrienderApi from './FrienderApi';
+import UserCard from "./UserCard";
 
 /** props: a single friend obj
  * presentational component that displays a company card
  */
-function ProfilePage() {
-    
-    const { user } = useContext(UserContext);
-   
-    return (
-        <div>
-            <div className="card" style={{width: "12em", height: "12em"}}>
+function ProfilePage({user}) {
 
-                <h1 className="text-dark">{user.username}</h1>
-                <div className="card-body text-dark">
-                    <img width="400px" height="400px" src={user.images?.[0]?.path} alt="no image yet"/>
-                    <p>{user.bio}</p>
-                    <p>{user.hobbies}</p>
-                    <p>{user.interests}</p>
-                    <p>{user.location}</p>    
-                </div>
-            <Link to="/profile/edit" className="btn-primary rig btn btn-sm">
-                Edit Profile
-            </Link>
-        </div>
+  return (
+    <div className="row d-flex justify-content-center h-50 w-100 m-5">
+      <UserCard user={user} />
     </div>
   );
 }

@@ -34,7 +34,6 @@ function App() {
         const username = decodeToken(token);
         const newUser = await FrienderApi.getUser(username, token);
         let images = await FrienderApi.getImages(newUser.username,token);
-        console.log("what is",images)
         newUser["images"] = images;
         setUser(() => newUser);
         localStorage.setItem(TOKEN_LOCAL_KEY, token);
@@ -112,19 +111,15 @@ function App() {
     setFormError(null);
   }
 
-  
-
- 
-
   return (
     <UserContext.Provider value = {{user}}>
       <BrowserRouter>
         <Nav logout={logout}/>
         <div className="container-fluid d-flex" style={{ height: "100vh" }}>
-          <RouteList 
-            login={login} 
-            register={register} 
-            update={update} 
+          <RouteList
+            login={login}
+            register={register}
+            update={update}
             addPhoto={addPhoto}
             />
         </div>
