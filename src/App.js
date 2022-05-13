@@ -33,6 +33,9 @@ function App() {
       async function getUserName() {
         const username = decodeToken(token);
         const newUser = await FrienderApi.getUser(username, token);
+        let images = await FrienderApi.getImages(newUser.username,token);
+        console.log("what is",images)
+        newUser["images"] = images;
         setUser(() => newUser);
         localStorage.setItem(TOKEN_LOCAL_KEY, token);
       };

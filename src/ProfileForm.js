@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import UserContext from "./userContext";
-
+import { Link, useNavigate } from "react-router-dom";
 /**
  *  Prop: updateUser function
  *  State: form data, and error messages
  *  Render profile form
  */
 function ProfileForm({ update, addPhoto }) {
+  const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const initialFormData = {
       username: user.username,
@@ -50,7 +51,7 @@ function ProfileForm({ update, addPhoto }) {
         { ...fData}
         ));
       setImages(() => [...images,filePath])
-      
+      navigate("/profile");
       
     } catch (error) {
     }

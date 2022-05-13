@@ -8,19 +8,28 @@ import FriendCard from "./FriendCard";
 function Dashboard() {
     const { user } = useContext(UserContext);
     const [potentialMatches, setPotentialMatches] = useState(null)
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         async function getMatches() {
 
             const res = await FrienderApi.getUsers(localStorage.getItem("token"))
+            for (let user of res) {
+                let images = await FrienderApi.getImages(user.username,localStorage.getItem("token"));
+                user["images"] = images;
+            }
             setPotentialMatches(() => [...res])
+            setIsLoading(() => false);
         }
         getMatches();
     },[]);
 
-    if(!potentialMatches) {
+    if (isLoading) {
         return (
-            <p>loading...</p>
+            <div>
+                <p className="text-dark">Loading...</p>
+            </div>
+            
         )
     }
 

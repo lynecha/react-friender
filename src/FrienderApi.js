@@ -30,7 +30,7 @@ class FrienderApi {
   static async getUsers(token){
     this.token = token
     let res = await this.request(`users`);
-    console.log(res)
+
     return res.matches
   }
 
@@ -47,7 +47,7 @@ class FrienderApi {
   static async register(user) {
     const data = user;
     let res = await this.request(`signup`, data, "post");
-    console.log(res)
+
     return res.access_token;
   }
 
@@ -77,6 +77,12 @@ class FrienderApi {
     return res;
   }
 
+  static async getImages(username, token) {
+    this.token = token;
+    console.log("what is username",username)
+    let res = await this.request(`users/${username}/photos`);
+    return res.images;
+  }
 
 
 }

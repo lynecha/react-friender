@@ -7,7 +7,7 @@ import UserContext from "./userContext";
 import FriendList from "./FriendList"
 import ProfileForm from "./ProfileForm"
 import Dashboard from "./Dashboard"
-
+import ProfilePage from "./ProfilePage"
 /** List of Routes.
  *
  * Props:
@@ -41,6 +41,10 @@ function RouteList({ login, register, update, addPhoto }) {
 
           <Route
             path="/profile"
+            element={<ProfilePage/>}
+          />
+          <Route
+            path="/profile/edit"
             element={<ProfileForm update={update} addPhoto={addPhoto} />}
           />
         </Routes>
