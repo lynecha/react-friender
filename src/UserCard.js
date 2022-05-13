@@ -17,7 +17,7 @@ import {
 function UserCard({ user }) {
 
   return (
-    <Card inverse outline color="dark" className="p-3 m-5 col-md-4">
+    <Card inverse outline color="dark" className="p-3 m-5 col-12 col-lg-2 col-md-3 col-sm-6">
       <CardImg className="img-fluid w-100 h-100" src={user?.images[0]?.path} alt="no image yet" />
       <CardImgOverlay />
       <CardHeader className="text-dark">

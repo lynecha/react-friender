@@ -1,0 +1,14 @@
+.bgimage {
+ width: 100%;
+ height: calc(100vh - 34px);
+ background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://picsum.photos/id/0/1920/1080?blur");
+ background-repeat: no-repeat;
+ background-position: "center center";
+ background-size: cover;
+ background-attachment: fixed;
+}
+
+.bgimage h5 {
+ color: white;
+ text-shadow: 2px 2px #333;
+}

@@ -8,29 +8,23 @@ import { Link } from "react-router-dom";
 function Homepage() {
     const { user } = useContext(UserContext);
     return (
-      <section className="bgimage d-flex align-items-center">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <h2>Friender</h2>
+          <div className="row d-flex w-100 align-items-center justify-content-center">
+            <div className="col-4">
+              <h2 className="text-light">Friender</h2>
               {user ? (
-                <p>Welcome Back {user.username} </p>
+                <p className="text-light">Welcome Back {user.username} </p>
               ) : (
-                <div>
-                  <h5>Find your friends. </h5>
-                  <div>
+                <>
+                  <h5 className="text-light ">Find your friends. </h5>
                     <span>
-                      <Link className="btn btn-primary" to={"/login"}>Log in</Link>
-                      <Link className="btn btn-primary" to={"/signup"}>Signup</Link>
+                      <Link className="btn btn-primary m-1" to={"/login"}>Log in</Link>
+                      <Link className="btn btn-primary m-1" to={"/signup"}>Signup</Link>
                     </span>
-                  </div>
-                </div>
+                </>
               )}
             </div>
           </div>
-        </div>
-      </section>
-    );
+    )
   }
-  
+
   export default Homepage;

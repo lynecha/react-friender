@@ -11,11 +11,11 @@ function Nav({logout}) {
   const { user } = useContext(UserContext);
   if (!user) {
     return (
-      <nav className="NavBar d-flex justify-content-between">
-        <div style={{ width: "1px" }}>
-          <NavLink to="/">Friender</NavLink>
+      <nav className="NavBar d-flex justify-content-between align-items-center">
+        <div className="d-flex align-items-center ms-4" style={{ width: "1px" }}>
+          <NavLink className="text-light" to="/">Friender</NavLink>
         </div>
-        <div>
+        <div className="d-flex align-items-center me-3">
           <NavLink to="/login">Login </NavLink>
           <NavLink to="/signup">Sign Up</NavLink>
         </div>
@@ -24,13 +24,13 @@ function Nav({logout}) {
   } else {
     return (
       <nav className="NavBar d-flex justify-content-between">
-        <div style={{ width: "1px" }}>
+        <div className="d-flex align-items-center ms-4" style={{ width: "1px" }}>
           <NavLink to="/">Friender</NavLink>
         </div>
-        <div >
+        <div className="d-flex align-items-center me-3" >
           <NavLink to="/profile">Profile</NavLink>
           <NavLink to="/dashboard">Dashboard</NavLink>
-          <NavLink to="/" onClick={logout}> Log Out {user.username}</NavLink>
+          <NavLink to="/" onClick={logout}> Log Out </NavLink>
         </div>
 
 

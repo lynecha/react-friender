@@ -64,7 +64,7 @@ function Register({ register }) {
   return (
     <div className="row d-flex justify-content-center w-100 h-25 mt-5 mb-2">
       <div className="col-12 w-50">
-        <h3 className="my-3 text-center">Sign Up</h3>
+        <h3 className="my-3 text-white text-center">Sign Up</h3>
         <form className="bg-white p-3 rounded" onSubmit={handleSubmit}>
           {renderForm()}
           <button className="btn-primary btn">

@@ -1,4 +1,4 @@
-.bgimage {
+/* .bgimage {
     width:100%;
     height:calc(100vh - 34px);
     background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("https://picsum.photos/id/0/1920/1080?blur");
@@ -10,10 +10,4 @@
   .bgimage h5 {
     color:white;
     text-shadow:2px 2px #333;
-  }
-
-/* .container-fluid {
-    text-align: center;
-    font-size: 3em;
-    color: white;
-} */
+  } */

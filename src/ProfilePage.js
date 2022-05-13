@@ -9,7 +9,7 @@ import UserCard from "./UserCard";
 function ProfilePage({user}) {
 
   return (
-    <div className="row d-flex justify-content-center h-50 w-100 m-5">
+    <div className="row d-flex justify-content-center h-50 w-100 m-2">
       <UserCard user={user} />
     </div>
   );

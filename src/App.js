@@ -115,7 +115,7 @@ function App() {
     <UserContext.Provider value = {{user}}>
       <BrowserRouter>
         <Nav logout={logout}/>
-        <div className="container-fluid d-flex" style={{ height: "100vh" }}>
+        <div className="container-fluid d-flex bgimage">
           <RouteList
             login={login}
             register={register}

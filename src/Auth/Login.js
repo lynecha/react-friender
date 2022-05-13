@@ -45,7 +45,7 @@ function Login({ login}) {
 
     <div className="row d-flex justify-content-center w-100 h-25 mt-5">
       <div className="col-12 w-50">
-        <h3 className="text-black">Log In</h3>
+        <h3 className="text-white text-center">Log In</h3>
         <form className="bg-white my-3 p-3 rounded" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="Login-username">Username</label>
