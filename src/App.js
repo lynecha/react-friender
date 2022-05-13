@@ -1,11 +1,12 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-import RouteList from "./common/RouteList";
-import Nav from "./common/Nav";
+import RouteList from "./RouteList";
 import UserContext from "./userContext";
 import jwt_decode from "jwt-decode";
 import FrienderApi from './FrienderApi';
+import Nav from './Nav';
+import "bootstrap/dist/css/bootstrap.css"
 
 const TOKEN_LOCAL_KEY = "token";
 
@@ -24,6 +25,24 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem(TOKEN_LOCAL_KEY));
   const [loadingUser, setLoadingUser] = useState(false);
   const [formError, setFormError] = useState(null);
+
+  // decode token and setUser state and store token in local Storage,
+  // depends on token state.
+  useEffect(function () {
+    if (token) {
+      async function getUserName() {
+        const username = decodeToken(token);
+        const newUser = await FrienderApi.getUser(username, token);
+        setUser(() => newUser);
+        localStorage.setItem(TOKEN_LOCAL_KEY, token);
+      };
+      getUserName();
+      setLoadingUser(false);
+      setFormError(null);
+    }
+  }, [token]);
+
+  if (loadingUser) return <div>Loading...</div>;
 
   //api call for token
   async function login(formData) {
@@ -45,7 +64,6 @@ function App() {
       setLoadingUser(true);
       const registerToken = await FrienderApi.register(formData);
       setToken(registerToken);
-      // navigate("/companies");
     }
     catch (err) {
       setFormError(() => err);
@@ -72,10 +90,18 @@ function App() {
     localStorage.removeItem(TOKEN_LOCAL_KEY);
   }
 
+  /** add photo to the backend*/
+  async function addPhoto(file) {
+    let res = await FrienderApi.addPhoto(file,user.username,token)
+    return res
+  }
+
+
+
   //decode token to get username
   function decodeToken(token) {
     const decode = jwt_decode(token);
-    return decode.username;
+    return decode.sub;
   }
 
   //update state of form error
@@ -83,30 +109,21 @@ function App() {
     setFormError(null);
   }
 
-  // decode token and setUser state and store token in local Storage,
-  // depends on token state.
-  useEffect(function () {
-    if (token) {
-      async function getUserName() {
-        const username = decodeToken(token);
-        const newUser = await FrienderApi.getUser(username, token);
-        setUser(() => newUser);
-        localStorage.setItem(TOKEN_LOCAL_KEY, token);
-      };
-      getUserName();
-      setLoadingUser(false);
-      setFormError(null);
-    }
-  }, [token]);
+  
 
-  if (loadingUser) return <div>Loading...</div>;
+ 
 
   return (
-    <UserContext.Provider>
+    <UserContext.Provider value = {{user}}>
       <BrowserRouter>
-        <Nav />
+        <Nav logout={logout}/>
         <div className="container-fluid d-flex" style={{ height: "100vh" }}>
-          <RouteList login={login} register={register} update={update} logout={logout}/>
+          <RouteList 
+            login={login} 
+            register={register} 
+            update={update} 
+            addPhoto={addPhoto}
+            />
         </div>
       </BrowserRouter>
     </UserContext.Provider>

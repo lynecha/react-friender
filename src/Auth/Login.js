@@ -14,7 +14,7 @@ import { Navigate, useNavigate} from "react-router-dom";
  * JoblyApp -> Login
  */
 
-function Login({ login, error }) {
+function Login({ login}) {
 
   const user = useContext(UserContext);
   const navigate = useNavigate();
@@ -45,8 +45,8 @@ function Login({ login, error }) {
 
     <div className="row d-flex justify-content-center w-100 h-25 mt-5">
       <div className="col-12 w-50">
-        <h3 className="text-white">Log In</h3>
-        <form className="bg-white my-3 p-3 rounded" onSubmit={handleSubmit}>
+        <h3 className="text-black">Log In</h3>
+        <form className="bg-black my-3 p-3 rounded" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="Login-username">Username</label>
             <input
@@ -70,7 +70,7 @@ function Login({ login, error }) {
               autoComplete={"true"}
             />
           </div>
-          {error && <div className="alert alert-danger" role="alert">{error}</div>}
+          {/* {error && <div className="alert alert-danger" role="alert">{error}</div>} */}
           <button className="btn btn-primary">Submit</button>
         </form>
       </div>
