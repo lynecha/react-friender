@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import UserContext from "./userContext";
 import { Link, useNavigate } from "react-router-dom";
+import {Button} from "reactstrap"
 /**
  *  Prop: updateUser function
  *  State: form data, and error messages
@@ -26,7 +27,7 @@ function ProfileForm({ update, addPhoto }) {
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData((fData) => ({
-    ...fData, [name]: value 
+    ...fData, [name]: value
     }));
   }
 
@@ -52,7 +53,7 @@ function ProfileForm({ update, addPhoto }) {
         ));
       setImages(() => [...images,filePath])
       navigate("/profile");
-      
+
     } catch (error) {
     }
   }
@@ -80,13 +81,14 @@ function ProfileForm({ update, addPhoto }) {
   }
 
   return (
-    <div>
-      <form encType="multipart/form-data" className="ProfileForm" onSubmit={handleSubmit}>
-        <label className="form-label" id="file">Upload image</label>
-        <input className="form-control" type="file" id="file" name="file" accept="image/png,image/jpeg" onChange={handleChangeForFile}/>
+    <div className="row d-flex justify-content-center w-100 h-25 mt-5">
+       <h3 className="text-white text-center">Update Profile</h3>
+      <form encType="multipart/form-data" className="ProfileForm w-50 mb-2" onSubmit={handleSubmit}>
         {renderForm()}
+        <h3 className="text-white text-center">Upload Image</h3>
+        <input className="form-control" type="file" id="file" name="file" accept="image/png,image/jpeg" onChange={handleChangeForFile}/>
 
-        <button className="btn-primary rig btn btn-sm ProfileForm-Btn">
+        <button className="btn btn-primary mt-3">
           Save changes
         </button>
       </form>
