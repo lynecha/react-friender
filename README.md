@@ -31,13 +31,12 @@ npm start
 ### Routes
 
 |Path | Component |
+| :--- | :--- |
 | / | Home  |
-| /register  | Login  |
-| /login  | Login  |
+| /register  | Signup  |
+| /signup  | Signup  |
 | /dashboard  | Dashboard  |
 | /profile | Profile  |
-
-
 
 
 ### Functionality Overview
