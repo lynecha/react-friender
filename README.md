@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Friender
+A single page React frontend and a RESTful API backend with full CRUD capabilities to allow users to perform CRUD operations on the images, matches, and messages routes and respond back with JSON. Built using React/Flask/Postgres. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Learnings
+* Authentication and authorization through JWTs on Flask
+* Implementing Amazon AWS S3 to store images
+* Designing a chat feature using a many to many relationship
 
-## Available Scripts
+_We built the backend in a seperate repository (code can be found [here](https://github.com/lynecha/flask-friender). Pair programmed with [Michael Paglione](https://github.com/pagman77)_
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+1. Clone this repo and the backend repo
+```
+git clone https://github.com/lynecha/react-jobly.git
+git clone https://github.com/lynecha/flask-friender.git
+```
+2. cd into the "backend" directory, install required packages, create and seed database, and start the server. (Make sure that you have postgreSQL installed)
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This will run your app on http://localhost:5001 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. cd into the "frontend" directory, install required packages, then start the app
+```
+cd frontend
+npm install
+npm start
+```
+This will run your app on http://localhost:3000 
 
-### `npm test`
+## App Information
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Routes
+|Path | Component |
+| :--- | :--- |
+| / | Home  |
+| /register  | Login  |
+| /login  | Login  |
+| /dashboard  | Dashboard  |
+| /profile | Profile  |
+```
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Functionality Overview
+The current user is shown other users that are near their location.
+![image](https://user-images.githubusercontent.com/31969608/171570310-be9a4a6f-b29f-45a3-a1ed-abc200f24df0.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
