@@ -45,4 +45,10 @@ This will run your app on http://localhost:3000
 The current user is shown other users that are near their location with an option to match or pass. (Dummy users currently do not have profile pictures)
 ![image](https://user-images.githubusercontent.com/31969608/171570310-be9a4a6f-b29f-45a3-a1ed-abc200f24df0.png)
 
+This is what a user with a profile picture looks like.
+
+
+![image](https://user-images.githubusercontent.com/31969608/171571495-3181b170-f4e2-4e91-8daf-d9d37cbd944f.png)
+
+
 
