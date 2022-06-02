@@ -29,14 +29,15 @@ npm start
 ## App Information
 
 ### Routes
-```
+
 |Path | Component |
 | / | Home  |
 | /register  | Login  |
 | /login  | Login  |
 | /dashboard  | Dashboard  |
 | /profile | Profile  |
-```
+
+
 
 
 ### Functionality Overview
