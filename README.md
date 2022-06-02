@@ -16,17 +16,14 @@ git clone https://github.com/lynecha/react-jobly.git
 git clone https://github.com/lynecha/flask-friender.git
 ```
 2. cd into the "backend" directory, install required packages, create and seed database, and start the server. (Make sure that you have postgreSQL installed)
-```
+  This will run your app on http://localhost:5001 
 
-This will run your app on http://localhost:5001 
+3. cd into the front end directory, install required packages, then start the app. This will run your app on http://localhost:3000 
 
-3. cd into the "frontend" directory, install required packages, then start the app
 ```
 cd frontend
 npm install
 npm start
-```
-This will run your app on http://localhost:3000 
 ```
 
 ## App Information
@@ -34,7 +31,6 @@ This will run your app on http://localhost:3000
 ### Routes
 ```
 |Path | Component |
-| :--- | :--- |
 | / | Home  |
 | /register  | Login  |
 | /login  | Login  |
