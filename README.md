@@ -27,10 +27,12 @@ npm install
 npm start
 ```
 This will run your app on http://localhost:3000 
+```
 
 ## App Information
 
 ### Routes
+```
 |Path | Component |
 | :--- | :--- |
 | / | Home  |
